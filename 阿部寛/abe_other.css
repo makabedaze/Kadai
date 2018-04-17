@@ -1,0 +1,48 @@
+.sideBar {
+    float: left;
+    background: skyblue;
+
+    position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 250px;                /* 横幅100%　*/
+    bottom: 0px;              /* 縦幅140px */
+}
+
+#kanri{
+    background: skyblue;
+}
+
+.sideBar #content{
+    position:relative;
+    top: 40px;
+    left: 40px;
+}
+
+.box1{
+    position:relative;
+    left: 500px;
+    top: 10px;
+    font-weight: bold;
+    width: 650px;
+}
+
+#title{
+    text-align: center;
+    font-size: 25px;
+}
+
+#last{
+    font-weight: normal;
+}
+
+#list{
+    text-align: left;
+    left: 0px;
+    right: 0px;
+}
+
+table{
+  width: 650px;
+}
+

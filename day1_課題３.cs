@@ -15,6 +15,17 @@ abstract class Shape{
     public abstract GetPriority(){
 
     }
+     
+    //比較することで優先されるか否かを判定。
+    //今ならそれぞれのこれを図形が増える度に変更する。
+    //これではないなにか
+    //DrawAllの引数に優先図形を書くのはNG
+    //抽象をブッコム
+    //普段意識せずに使っている手法
+    public abstract bool Preceeds(Shape shape){
+       //形と比べてるのがあかん
+       //
+    };
 
     public abstract Draw();
 }
@@ -22,6 +33,7 @@ abstract class Shape{
 class Circle : Shape{
     protected int radius;
     
+
     Circle(int 半径,Point 中心点){
         radius = 半径;
         center = 中心点;
@@ -65,6 +77,7 @@ class DrawingTool{
     void DrawAllShapes(List<Shape> shapeList){
         //優先度によって昇順に並び替える。
         shapeList = shapeList.OrderBy(p => p.GetPriority());
+        
         foreach(Shape shape in shapeList){
             shape.Draw();
         }
