@@ -1,0 +1,82 @@
+.sideBar {
+    float: left;
+    background: skyblue;
+
+    position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 250px;                /* 横幅100%　*/
+    bottom: 0px;              /* 縦幅140px */
+}
+
+.sideBar #content{
+    position:relative;
+    top: 40px;
+    left: 40px;
+}
+
+.box1{
+    position:relative;
+    left: 500px;
+    top: 10px;
+    width: 600px;
+    font-weight: bold;
+}
+
+#title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.box2{
+    position:relative;
+    left: 400px;
+    
+    float: left; 
+}
+
+.box3{
+    position:relative;
+    left: 500px;
+    
+    float: left; 
+}
+
+#syutuen{
+    font-weight: bold;
+}
+
+.box3 #top{ 
+    width: 500px;
+    height: 200px;
+    line-height: 180px;
+    text-align: center;
+}
+
+.box3 #ko{
+    width: 200px; 
+    margin: 0 auto;  
+}
+
+#middle{
+    font-weight: bold;
+}
+
+.box2{
+    width: 230px;
+    height: 100px;
+}
+
+h1 {
+    color: red 
+}
+
+#bar {
+    color: blue
+}
+
+.foo {
+    color: green
+}
+
+
