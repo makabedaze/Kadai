@@ -4,7 +4,7 @@
 
 function AddTodo(code) {
     if (code == 13) {
-        let tex = document.forms.main.textField;
+        let tex = document.getElementById("textField");
         CreateTodoItem(tex.value);
         tex.value = " ";
     }
@@ -15,17 +15,24 @@ function CreateTodoItem(todoText) {
     //  $sampleButton.textContent = todoText;
     //  document.getElementById("sample").appendChild($sampleButton);
 
+
     // テーブル取得
     let table = document.getElementById("list");
     // 行を行末に追加
-    let row = table.insertRow(0);
+    let row = table.insertRow(1);
     // セルの挿入
     var cell1 = row.insertCell(-1);
-
     // ボタン用 HTML
     var button = '<input type = "text"  value = ' + todoText + '>';
     // セルの内容入力
     cell1.innerHTML = button;
+
+
+    var num = list.rows.length;
+    console.log(num);
+    document.getElementById("text").innerHTML = (num - 2) + " items left"
+    //TODO:要素を組み合わせたものを生成するにはどうするか
+    //完成品を作って置いてそれをコピーするとか
 
     /*パターン２ 
     var sampleButton = document.createElement("BUTTON");

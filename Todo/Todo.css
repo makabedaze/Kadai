@@ -1,25 +1,38 @@
 .title{
     text-align: center;
     font-size: 80px;
-    color: gray;
-    opacity: 0.5;;
+    color: #E6E6E6;
+    opacity: 1;
 }
 
-.middle {
-    margin: 0 auto;  
-    width: 450px;
-}
-
-#textField{
-    height: 60px;
-    font-size: 30px;
-}
 
 table{
-    table-layout: fixed;
+    margin: 0 auto;
+    margin-top: -80px;
+    table-layout: fixed;   
 }
 
-input{
+.bottomBar{
+    color: gray;
+    width: 450px;
+    height: 40px;
+    border: solid 1px #E6E6E6; 
+    background:white;
+}
+
+#text{
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+.radio{
+    margin-left: 30px;
+    margin-top: 10px;
+    float: left;
+}
+
+input[type="text"]{
     width: 450px;
     height: 60px;
     font-size: 30px;

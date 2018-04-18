@@ -6,23 +6,35 @@
     <title>Todoリスト</title>
 </head>
 
-<body>
+<body bgcolor="#F2F2F2">
     <p class="title ">todos</p>
 
-    <div>
-        <form id="main" class="middle" onsubmit="return false;">
-            <input type="text " id="textField" class="middle" 　placeholder="What need to be Done? " onkeypress="AddTodo(event.keyCode);">
+    <table id="list">
+        <tr>
+            <td>
+                <input type="text" id="textField" placeholder="What need to be Done? " onkeypress="AddTodo(event.keyCode);">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="bottomBar">
+                    <div>
+                        <p id="text">items left</p>
+                    </div>
+                    <div class="radio">
+                        <label for="all">All</label>
+                        <input id="checkBox" type="checkbox" name="all">
+                        <label for="active">Active</label>
+                        <input id="checkBox" type="checkbox" name="active">
+                        <label for="completed">Completed</label>
+                        <input id="checkBox" type="checkbox" name="completed">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-        </form>
 
-        <table id="list" class="middle">
-            <tr>
-                <td>
-                    <input type="text" value='items left'>
-                </td>
-            </tr>
-        </table>
-    </div>
 
 
 
