@@ -1,0 +1,26 @@
+.title{
+    text-align: center;
+    font-size: 80px;
+    color: gray;
+    opacity: 0.5;;
+}
+
+.middle {
+    margin: 0 auto;  
+    width: 450px;
+}
+
+#textField{
+    height: 60px;
+    font-size: 30px;
+}
+
+table{
+    table-layout: fixed;
+}
+
+input{
+    width: 450px;
+    height: 60px;
+    font-size: 30px;
+}
