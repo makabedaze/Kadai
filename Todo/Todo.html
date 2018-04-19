@@ -16,26 +16,23 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <div class="bottomBar">
-                    <div>
-                        <p id="text">items left</p>
-                    </div>
-                    <div class="radio">
-                        <label for="all">All</label>
-                        <input id="checkBox" type="checkbox" name="all">
-                        <label for="active">Active</label>
-                        <input id="checkBox" type="checkbox" name="active">
-                        <label for="completed">Completed</label>
-                        <input id="checkBox" type="checkbox" name="completed">
-                    </div>
+            <td class="bottomBar">
+                <div>
+                    <p id="text">0 items left</p>
                 </div>
+                <div class="radio">
+                    <label for="all">All</label>
+                    <input type="radio" name="all">
+                    <label for="active">Active</label>
+                    <input type="radio" name="all">
+                    <label for="completed">Completed</label>
+                    <input type="radio" name="all">
+
+                </div>
+                <input type="button" value="Clear Completed" onclick="DeleteAllRow()">
             </td>
         </tr>
     </table>
-
-
-
 
 
     <script type="text/javascript" src="Todo.js "></script>
