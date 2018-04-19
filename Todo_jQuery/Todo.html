@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./Todo.css">
+
+    <title>Todoリスト</title>
+</head>
+
+<body bgcolor="#F2F2F2">
+    <p class="title ">todos</p>
+
+    <table id="list">
+        <tr>
+            <td>
+
+                <input type="text" id="textField" placeholder="What need to be Done?">
+                <input id="masterCheck" type="checkbox" />
+            </td>
+        </tr>
+        <tr>
+            <td class="bottomBar">
+                <div>
+                    <p id="text">0 items left</p>
+                </div>
+                <div class="radio">
+                    <label for="all">All</label>
+                    <input type="radio" name="all" value="0" checked="true">
+                    <label for="active">Active</label>
+                    <input type="radio" name="all" value="1">
+                    <label for="completed">Completed</label>
+                    <input type="radio" name="all" value="2">
+                </div>
+                <input type="button" value="Clear Completed" onclick="DeleteAllRow()">
+            </td>
+        </tr>
+    </table>
+
+    <script type="text/javascript" src="jquery-3.3.1.js "></script>
+    <script type="text/javascript" src="Todo.js "></script>
+</body>
+
+</html>
