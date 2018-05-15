@@ -1,0 +1,17 @@
+# Compose file
+version: "3"
+
+services:
+  web:
+    image: php
+    ports:
+      - "7000"
+
+  proxy:
+    image: nginx
+    ports:
+      - "8112:80"
+    volumes:
+      - ./proxy/nginx-sites.conf:/etc/nginx/conf.d/default.conf
+      - ./web/app/src/public:/var/data/static
+  
