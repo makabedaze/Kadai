@@ -171,18 +171,70 @@ WHEN HP BETWEEN 101 AND 150 THEN 1
 ELSE 0 END) AS リスク値
 FROM パーティー
 ORDER BY リスク値 DESC,HP
---44-----------------------------------------------
-SELECT 前提イベント番号,
-COALESCE(CAST(イベント番号 AS VARCHAR),'前提なし') AS 前提イベント,
-COALESCE(CAST(後続イベント番号 AS VARCHAR),'後続なし') AS 後続イベント
+--44
+SELECT CASE WHEN 前提イベント番号 IS NULL THEN '前提無し' 
+ELSE 前提イベント番号 END
+AS 前提イベント番号,
+イベント番号, 
+CASE WHEN 後続イベント番号 IS NULL THEN '後続無し'
+ELSE 後続イベント番号 END
+AS 後続イベント番号
 FROM イベント
 ORDER BY イベント番号
 --45
 SELECT MAX(HP),MIN(HP),AVG(HP),MAX(MP),MIN(MP),AVG(MP)
 FROM パーティー
 --46-----------------------------------------------
-SELECT (COUNT(タイプ) HAVING タイプ='1') AS 強制,
-COUNT(タイプ) HAVING タイプ='2' AS フリー,
-COUNT(タイプ) HAVING タイプ='3' AS 特殊,
-FROM イベント
+SELECT CASE タイプ WHEN '1' THEN '強制' 
+WHEN '2' THEN 'フリー' 
+ELSE '特殊' END AS タイプ,
+COUNT(イベント番号) AS イベント数 
+FROM イベント GROUP BY タイプ;
 --47
+SELECT クリア結果,
+COUNT(クリア結果)
+FROM 経験イベント
+WHERE クリア結果 IS NOT NULL
+GROUP BY クリア結果
+ORDER BY クリア結果
+--48
+SELECT CASE WHEN SUM(MP) < 500 THEN '敵は見とれている'
+WHEN SUM(MP) BETWEEN 500 AND 1000 THEN '敵は呆然としてる'
+ELSE '敵はひれ伏している' END AS 小さな輝石
+FROM パーティー
+--49 
+SELECT CASE WHEN クリア区分=0 THEN '参加したがクリアしてない'
+ELSE 'クリアした' END AS クリア区分,
+COUNT(*)
+FROM 経験イベント
+GROUP BY クリア区分
+ORDER BY クリア区分
+--50
+SELECT
+SUBSTRING(職業コード,1,1)
+AS 職業タイプ,
+MAX(HP),
+MIN(HP),
+AVG(HP),
+MAX(MP),
+MIN(MP),
+AVG(MP)
+FROM パーティー
+GROUP BY SUBSTRING(職業コード,1,1)
+--57
+SELECT 
+イベント番号,
+イベント名称
+FROM イベント
+WHERE イベント番号 
+NOT IN (SELECT イベント番号 FROM 経験イベント);
+--58
+--62
+SELECT 
+ルート番号,
+イベント.イベント番号,
+イベント名称,
+クリア結果
+FROM 経験イベント
+JOIN イベント
+ON イベント.イベント番号=経験イベント.イベント番号
