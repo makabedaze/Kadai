@@ -1,0 +1,140 @@
+namespace Enemy{
+
+    class Damage{
+        float value
+    }
+
+    abstract BaseEnemy {
+        float health
+        float speed
+        float point
+        bool isFly
+        TakeDamage(Damage damage)
+        Move()
+        Die()
+    }
+    BaseEnemy -> Damage
+
+    class EnemyA{
+
+    }
+    EnemyA -u-|> BaseEnemy
+
+    class EnemyB{
+
+    }
+    EnemyB -u-|> BaseEnemy
+
+    class EnemyC{
+
+    }
+    EnemyC -u-|> BaseEnemy
+}
+
+namespace Tower{
+    class TowerStatus{
+        float power
+        float fireRate
+        float bulletSpeed
+        float range
+        bool antiAircraft
+    }
+
+    abstract BaseTower{
+        int lv
+        int price
+        Status status[]
+        Bullet bullet
+
+
+        Fire()
+        UpGrade()
+        Sell()
+        LockOn()
+    }
+    note top of BaseTower
+        偏差射撃はみためだけ？
+
+    end note
+
+    class TowerA{
+
+    }
+    TowerA -u-|> BaseTower
+}
+
+
+namespace bullet{
+    abstract BaseBullet{
+        float damageValue
+        float bulletSpeed
+        OnHit()
+    }
+    note top of BaseBullet
+        Hit時にIDamageBleをとる
+    end note
+
+    class BulletA{
+
+    }
+    BulletA -u-|> BaseBullet
+}
+
+namespace Manager{
+    class GameManager{
+        StartWave()
+        GameOver()
+    }
+    GameManager -> EnemyManager
+
+    class EnemyManager{
+        BaseEnemy[] enemies
+        Spawn()
+    }
+    note top of EnemyManager
+        Hit時にIDamageBleをとる
+    end note
+
+    class EnergyManager{
+        int energy
+        ApplyEnergy()
+        bool UseEnergy(int price)
+    }
+    note top of EnergyManager
+        タワー購入時
+        敵の死亡時
+    end note
+
+    class TouchManager{
+        
+    }
+    note top of TouchManager
+        タワーが押された時に
+        そのインスタンスをとってきて
+        TowerUIを表示
+
+        設置可能場所を押した時のタワーの設置
+        敵が通る道には置けないように
+
+        
+    end note
+}
+
+namespace UI{
+    class Controller{
+        ビジネスロジック直接叩くのやばいからこっちをからやるか
+    }
+
+    class StartUI{
+
+    }
+
+    class ShopUI{
+        買ったらタッチマネージャーに
+        生成メソッドを渡す？
+    }
+
+    class TowerUI{
+
+    }
+}
