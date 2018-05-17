@@ -29,6 +29,7 @@ class News extends CI_Controller
 
         $data['title'] = $data['news_item']['title'];
 
+        //このviewは連想配列$dataのキーを変数として変換して受け取る
         $this->load->view('templates/header', $data);
         $this->load->view('news/view', $data);
         $this->load->view('templates/footer');
