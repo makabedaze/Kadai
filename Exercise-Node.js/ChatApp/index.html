@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>チャットだよ</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+
+        form button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 id="room"></h2>
+    <ul id="roomlist"></ul>
+    <ul id="messages"></ul>
+    <form action="">
+        <input id="m" autocomplete="off" />
+        <button>送信</button>
+    </form>
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+
+            var socket = io();
+
+            socket.on('display room', function (msg) {
+                $('#room').text(msg);
+            });
+
+            $('form').submit(function () {
+                //chat messageにid mの内容を送っとる
+                socket.emit('chat message', $('#m').val());
+                //そのあと初期化
+                $('#m').val('');
+                return false;
+            });
+
+            socket.on('chat message', function (msg) {
+
+                //$('#messages').append($('<li>').text(msg));
+                $('#messages').append($('<p>').text(msg));
+            });
+
+            socket.on('info', function (msg) {
+                $('#messages').append($('<p>').text(msg));
+            });
+
+            socket.on('reset', function (msg) {
+                $('#messages').empty();
+            });
+        });
+    </script>
+</body>
+
+</html>
